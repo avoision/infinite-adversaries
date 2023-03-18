@@ -1,0 +1,69 @@
+.encounter {
+  .encounter__image {
+    position: relative;
+    display: grid;
+    background-color: #333;
+
+    margin-bottom: 2vh;
+  }
+
+  .encounter__image--primary,
+  .encounter__image--blurred {
+    grid-area: 1/-1;
+  }
+
+  .encounter__image--primary {
+    img {
+      max-height: 50vh;
+      display: block;
+      margin: 0 auto;
+    }
+    z-index: 100;
+  }
+
+  .encounter__image--blurred {
+    filter: blur(7px);
+    background-size: cover;
+    background-position: center;
+
+    opacity: 0.7;
+  }
+
+  .encounter__title {
+    margin-bottom: 2vh;
+  }
+
+  .encounter__description {
+    margin-bottom: 2vh;
+  }
+
+  .encounter__adversary {
+    margin-bottom: 2vh;
+  }
+
+  .encounter__riddleText {
+    margin-bottom: 2vh;
+    color: peachpuff;
+    line-height: 4.5vh;
+
+    margin: 0 7vw;
+    padding: 1vw 7vw;
+    font-size: 3.5rem;
+
+    // padding: 2vh;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .encounter__options {
+    margin-top: 2vh;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    button {
+      flex: 40%;
+      padding-top: 2px;
+    }
+  }
+}

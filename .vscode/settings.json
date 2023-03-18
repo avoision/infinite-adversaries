@@ -1,4 +1,14 @@
 {
   "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "eslint.format.enable": true,
+  "eslint.run": "onSave",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.alwaysShowStatus": true,
+  "eslint.workingDirectories": ["app"],
+  "eslint.codeActionsOnSave.rules": null
 }
