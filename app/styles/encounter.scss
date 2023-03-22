@@ -1,8 +1,10 @@
 .encounter {
+  margin-bottom: 20vh;
+
   .encounter__image {
     position: relative;
     display: grid;
-    background-color: #333;
+    background-color: #eee;
 
     margin-bottom: 2vh;
   }
@@ -29,28 +31,23 @@
     opacity: 0.7;
   }
 
-  .encounter__title {
-    margin-bottom: 2vh;
-  }
-
   .encounter__description {
     margin-bottom: 2vh;
   }
 
-  .encounter__adversary {
-    margin-bottom: 2vh;
+  .encounter__outcomes {
   }
 
-  .encounter__riddleText {
+  .encounter__title {
     margin-bottom: 2vh;
     color: peachpuff;
     line-height: 4.5vh;
 
-    margin: 0 7vw;
+    text-align: center;
+    margin: 3vh 2vw 2vh 2vw;
     padding: 1vw 7vw;
     font-size: 3.5rem;
 
-    // padding: 2vh;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
@@ -64,6 +61,11 @@
     button {
       flex: 40%;
       padding-top: 2px;
+      margin: 5px;
     }
+  }
+
+  .outcome {
+    margin-bottom: 2vh;
   }
 }

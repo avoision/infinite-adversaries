@@ -1,4 +1,4 @@
-import { getRandomSeed } from "./helper";
+import { getRandomSeed } from "../util/helper";
 
 const artistSeeds = [
   'Albrecht Dürer',
@@ -397,14 +397,7 @@ const imageTypeSeeds = [
 
 
 const imagePrompt = (keywords: string) => {
-  // const prefix = `Create an image, in the style of ${getRandomSeed(imageStyleSeeds)}. `;
-  // const prefix = `Create an painting, in the style of ${getRandomSeed(artistSeeds)}. `;
   const prompt = `Create a ${getRandomSeed(imageTypeSeeds)}, in the style of ${getRandomSeed(photographerSeeds)} using the following keywords: + ${keywords}`;
-  
-  // const textPrompt = Math.random() < 0.5 ? locationText : adversaryText;
-  // const textPrompt = `${locationText} ${adversaryText}`;
-  // const suffix = `Use the following prompt: ` + textPrompt;
-  
   
   return prompt;
 }

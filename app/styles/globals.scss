@@ -1,0 +1,39 @@
+@import "normalize.css";
+@import "skeleton.css";
+@import "effects.scss";
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 1vw;
+  padding: 1vw 0 1vw 1vw;
+  background-color: #333;
+  box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
+
+  .logo {
+    color: #fff;
+    width: 69px;
+    height: 20px;
+  }
+
+  nav {
+    display: flex;
+
+    margin-right: 20px;
+  }
+
+  a {
+    margin-right: 10px;
+    text-decoration: none;
+    text-transform: lowercase;
+  }
+
+  margin-bottom: 2vh;
+}
+
+.buyMeACoffee {
+  height: 29px !important;
+  width: 125px !important;
+  box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;
+  -webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;
+}

@@ -1,0 +1,88 @@
+@import '../../styles/colors.scss';
+
+.loaderText--fadeIn {
+  opacity: 0.8;
+  transition: opacity 1s ease-in;
+}
+
+.loaderText--fadeOut {
+  opacity: 0;
+  transition: opacity 2s ease-out;
+}
+
+.loader__outer {
+  display: table;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.loader__inner {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.loader__content {
+  height: 100px;
+}
+
+.loader__image {
+  text-align: center;
+  margin: 0 auto;
+
+  // CSS Loader by Rosa
+  // https://codepen.io/RRoberts/pen/pEXWEp
+
+  &--bar {
+    display: inline-block;
+    width: 10px;
+    height: 30px;
+    background-color: #3498db;
+    margin-right: 3px;
+  }
+
+  &--bar:nth-child(1) {
+    animation: grow 1s ease-in-out infinite;
+  }
+
+  &--bar:nth-child(2) {
+    animation: grow 1s ease-in-out 0.15s infinite;
+  }
+
+  &--bar:nth-child(3) {
+    animation: grow 1s ease-in-out 0.3s infinite;
+  }
+
+  &--bar:nth-child(4) {
+    animation: grow 1s ease-in-out 0.45s infinite;
+  }
+
+  &--bar:nth-child(5) {
+    animation: grow 1s ease-in-out 0.6s infinite;
+  }
+}
+
+@keyframes grow {
+  0%,
+  100% {
+    -webkit-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -o-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+
+  50% {
+    -webkit-transform: scaleY(1.8);
+    -ms-transform: scaleY(1.8);
+    -o-transform: scaleY(1.8);
+    transform: scaleY(1.8);
+  }
+}
+
+.quote {
+  text-align: center;
+  margin: 2vh auto 0 auto;
+  width: 70%;
+}

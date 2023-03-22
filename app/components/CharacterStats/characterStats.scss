@@ -1,0 +1,40 @@
+.stats {
+  position: relative;
+  // margin-bottom: 0;
+}
+
+h2 {
+  position: absolute;
+  top: 0.5vh;
+  left: 0.5vw;
+  color: white;
+  font-size: 1.7vh;
+}
+
+progress {
+  appearance: none;
+
+  // border-radius: 25px;
+  // padding: 10px;
+  // box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+
+  // background-color: green;
+  accent-color: purple;
+  width: 100%;
+}
+
+progress::-webkit-progress-bar {
+  // background: blue;
+  // accent-color: purple;
+}
+progress::-webkit-progress-value {
+  // background: green;
+  // accent-color: purple;
+  background-color: green;
+}
+
+// .takeDamage::-webkit-progress-value {
+//   background-color: red;
+
+//   transition: background-color ease-in 4s;
+// }

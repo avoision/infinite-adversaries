@@ -1,0 +1,67 @@
+// .fadeInImage {
+//   animation: fadeIn 2s;
+// }
+
+// .fadeInText {
+//   animation: fadeIn 1.5s ease-out;
+// }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 2s;
+}
+
+.fadeOut {
+  animation: fadeOut 2s;
+}
+
+.takeDamage::-webkit-progress-value {
+  // animation: takeDamage 5s;
+  // -webkit-animation: takeDamage 5s;
+  // -webkit-animation: progress 2.3s ease-in-out infinite;
+
+  // background-color: blue;
+
+  // transition: background-color ease-in 1s;
+}
+
+// @-webkit-keyframes takeDamage {
+//   0% {
+//     accent-color: red;
+//     background: red;
+//   }
+
+//   100% {
+//     accent-color: green;
+//     background: green;
+//   }
+// }
+
+// @keyframes takeDamage {
+//   0% {
+//     accent-color: red;
+//     background: red;
+//   }
+
+//   100% {
+//     accent-color: green;
+//     background: green;
+//   }
+// }

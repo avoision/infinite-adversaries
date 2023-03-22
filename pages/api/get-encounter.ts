@@ -2,10 +2,6 @@ import { NextApiResponse } from 'next';
 import { NextApiRequestPrompt } from './types';
 import { Configuration, OpenAIApi } from 'openai';
 
-type ResponseData = {
-  text: string;
-}
-
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY
 })
@@ -19,11 +15,11 @@ export default async function handler(req: NextApiRequestPrompt, res: NextApiRes
     max_tokens: 2000
   })
 
-  // console.log(response?.data)
+  console.log(response?.data)
   const promptAnswerRaw = response?.data?.choices[0]?.text?.trim();
 
   if (promptAnswerRaw) {
-    // console.log(promptAnswerRaw)
+    console.log(promptAnswerRaw)
     const formattedAnswer = JSON.parse(promptAnswerRaw);
     res.status(200).json(formattedAnswer)
   } else {
