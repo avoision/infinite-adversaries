@@ -1,81 +1,94 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './loader.scss';
 import { quoteSeeds } from './quotes';
 import _ from 'lodash';
+import { CSSTransition } from 'react-transition-group';
+import Image from 'next/image';
+import infinityLoader from 'public/img/Infinity-1.4s-231px.svg';
 
 type LoaderProps = {
   isLoading: boolean;
+  showLoader: boolean;
 };
 
 const Loader = (props: LoaderProps) => {
-  const { isLoading } = props;
-
-  let randomQuotes: string[] = [];
-
-  const [fadeProp, setFadeProp] = useState({ fadeStyle: 'loaderText--fadeIn' });
-
-  const [getQuoteList, setQuoteList] = useState(randomQuotes);
+  const { isLoading, showLoader } = props;
+  const [getQuoteList, setQuoteList] = useState(['']);
   const [quotePos, setQuotePos] = useState(0);
-
   const textFadeInterval = 5000;
 
+  const [fadeTextTransition, setFadeTextTransition] = useState(true);
+
   useEffect(() => {
-    randomQuotes = _.shuffle(quoteSeeds);
+    const randomQuotes = _.shuffle(quoteSeeds);
     setQuoteList(randomQuotes);
   }, []);
 
   useEffect(() => {
     const timeout = setInterval(() => {
-      console.log('setInterval');
-
-      if (!isLoading) {
-        clearInterval(timeout);
-      } else {
-        if (fadeProp.fadeStyle === 'loaderText--fadeIn') {
-          setFadeProp({
-            fadeStyle: 'loaderText--fadeOut',
-          });
-        } else {
-          let newPos = quotePos + 1;
-          newPos = newPos < getQuoteList.length ? newPos : 0;
-          setQuotePos(newPos);
-
-          setFadeProp({
-            fadeStyle: 'loaderText--fadeIn',
-          });
-        }
-      }
+      setFadeTextTransition(!fadeTextTransition);
     }, textFadeInterval);
-
     return () => clearInterval(timeout);
-  }, [fadeProp, isLoading, quotePos, getQuoteList.length]);
+  }, [fadeTextTransition]);
 
-  let rv = null;
+  function updateQuotePos() {
+    let newPos = quotePos + 1;
+    newPos = newPos < getQuoteList.length ? newPos : 0;
+    setQuotePos(newPos);
+  }
 
-  const loaderStyle = isLoading ? `loader__outer` : `loader__outer fadeOut`;
+  const loaderRef = useRef(null);
+  const textRef = useRef(null);
 
-  // if (isLoading) {
-  rv = (
-    <div className={loaderStyle}>
-      <div className="loader__inner">
-        <div className="loader__content">
-          <div className="loader__image">
-            <div className="loader__image--bar" />
-            <div className="loader__image--bar" />
-            <div className="loader__image--bar" />
-            <div className="loader__image--bar" />
-            <div className="loader__image--bar" />
+  return (
+    <CSSTransition
+      nodeRef={loaderRef}
+      in={isLoading && showLoader}
+      appear={true}
+      timeout={{ appear: 3000, enter: 1000, exit: 500 }}
+      classNames="loader"
+      className="loader__outer loader"
+      unmountOnExit={true}
+    >
+      <div ref={loaderRef}>
+        <div className="loader__inner">
+          <div className="loader__content">
+            <div className="loader__image">
+              <Image
+                src={infinityLoader}
+                priority
+                className="spinner"
+                alt="alt"
+                height="50"
+                width="100"
+              />
+              {/* <div className="loader__image--bar" />
+              <div className="loader__image--bar" />
+              <div className="loader__image--bar" />
+              <div className="loader__image--bar" />
+              <div className="loader__image--bar" /> */}
+            </div>
+            <CSSTransition
+              nodeRef={textRef}
+              in={isLoading && showLoader && fadeTextTransition}
+              appear={true}
+              timeout={{
+                appear: 1000,
+                enter: 1000,
+                exit: 500,
+              }}
+              classNames="quoteFade"
+              className="quote quoteFade"
+              onExited={updateQuotePos}
+            >
+              <div ref={textRef}>{getQuoteList[quotePos]}</div>
+            </CSSTransition>
           </div>
-
-          <div className={`${fadeProp.fadeStyle} quote`}>{getQuoteList[quotePos]}</div>
         </div>
       </div>
-    </div>
+    </CSSTransition>
   );
-  // }
-
-  return rv;
 };
 
 export { Loader };

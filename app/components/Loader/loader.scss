@@ -31,58 +31,97 @@
 .loader__image {
   text-align: center;
   margin: 0 auto;
+}
 
-  // CSS Loader by Rosa
-  // https://codepen.io/RRoberts/pen/pEXWEp
+.loader,
+.loader-appear,
+.loader-enter {
+  opacity: 0;
 
-  &--bar {
-    display: inline-block;
-    width: 10px;
-    height: 30px;
-    background-color: #3498db;
-    margin-right: 3px;
-  }
-
-  &--bar:nth-child(1) {
-    animation: grow 1s ease-in-out infinite;
-  }
-
-  &--bar:nth-child(2) {
-    animation: grow 1s ease-in-out 0.15s infinite;
-  }
-
-  &--bar:nth-child(3) {
-    animation: grow 1s ease-in-out 0.3s infinite;
-  }
-
-  &--bar:nth-child(4) {
-    animation: grow 1s ease-in-out 0.45s infinite;
-  }
-
-  &--bar:nth-child(5) {
-    animation: grow 1s ease-in-out 0.6s infinite;
+  .loader__image {
+    opacity: 0;
   }
 }
 
-@keyframes grow {
-  0%,
-  100% {
-    -webkit-transform: scaleY(1);
-    -ms-transform: scaleY(1);
-    -o-transform: scaleY(1);
-    transform: scaleY(1);
-  }
+.loader-appear-active,
+.loader-enter-active {
+  opacity: 1;
+  transition: opacity 2s;
+  // transition-delay: 2s;
 
-  50% {
-    -webkit-transform: scaleY(1.8);
-    -ms-transform: scaleY(1.8);
-    -o-transform: scaleY(1.8);
-    transform: scaleY(1.8);
+  .loader__image {
+    opacity: 1;
+    transition: opacity 2s;
+    // transition-delay: 2s;
+  }
+}
+
+.loader-appear-done,
+.loader-enter-done {
+  opacity: 1;
+  .loader__image {
+    opacity: 1;
+  }
+}
+
+.loader-exit {
+  opacity: 1;
+
+  .loader__image {
+    opacity: 1;
+  }
+}
+
+.loader-exit-active {
+  opacity: 0;
+  transition: opacity 2s;
+
+  .loader__image {
+    opacity: 0;
+    transition: opacity 2s;
+  }
+}
+
+.loader-exit-done {
+  opacity: 0;
+
+  .loader__image {
+    opacity: 0;
   }
 }
 
 .quote {
   text-align: center;
-  margin: 2vh auto 0 auto;
+  margin: 0.5vh auto 0 auto;
   width: 70%;
+}
+
+.quoteFade,
+.quoteFade-appear,
+.quoteFade-enter {
+  opacity: 0;
+}
+
+.quoteFade-appear-active,
+.quoteFade-enter-active {
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+.quoteFade-appear-done,
+.quoteFade-enter-done {
+  opacity: 1;
+}
+
+.quoteFade-exit {
+  opacity: 1;
+}
+
+.quoteFade-exit-active {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.quoteFade-exit-done {
+  opacity: 0;
 }

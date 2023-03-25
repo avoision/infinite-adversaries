@@ -1,0 +1,31 @@
+.error__outer {
+  display: table;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.error__inner {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.error__content {
+  width: 70%;
+  margin: 0 auto;
+
+  &--title {
+    margin-bottom: 1vh;
+  }
+
+  &--image {
+    width: 70vw;
+    height: auto;
+  }
+
+  &--text {
+    margin-bottom: 2vh;
+  }
+}

@@ -1,0 +1,27 @@
+.weapon__outer {
+  display: table;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.weapon__inner {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.weapon__content {
+  width: 70%;
+  margin: 0 auto;
+
+  .encounter__options {
+    margin-top: 2vh;
+    text-align: center;
+
+    button {
+      margin-right: 2vw;
+    }
+  }
+}

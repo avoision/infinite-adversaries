@@ -1,0 +1,51 @@
+.titleSequence__outer {
+  display: table;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.titleSequence__inner {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.titleSequence__content {
+  text-align: center;
+  margin: 0 auto;
+
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+.titleSequence,
+.titleSequence-appear,
+.titleSequence-enter {
+  opacity: 0;
+}
+
+.titleSequence-appear-active,
+.titleSequence-enter-active {
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+.titleSequence-appear-done,
+.titleSequence-enter-done {
+  opacity: 1;
+}
+
+.titleSequence-exit {
+  opacity: 1;
+}
+
+.titleSequence-exit-active {
+  opacity: 0;
+  transition: opacity 2s;
+}
+
+.titleSequence-exit-done {
+  opacity: 0;
+}

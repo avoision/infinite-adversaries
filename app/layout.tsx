@@ -1,9 +1,10 @@
-import "./styles/globals.scss";
-import { Header } from "./components";
+import AppContextProvider from './components/AppContext/AppContextProvider';
+import './styles/globals.scss';
+import { Header } from './components';
 
 export const metadata = {
-  title: "Infinite adversaries",
-  description: "An adversarial game that goes on forever",
+  title: 'Infinite adversaries',
+  description: 'An adversarial game that goes on forever',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -11,7 +12,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body>
         {<Header />}
-        {children}
+        <AppContextProvider>{children}</AppContextProvider>
       </body>
     </html>
   );
