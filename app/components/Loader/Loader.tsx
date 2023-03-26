@@ -63,11 +63,6 @@ const Loader = (props: LoaderProps) => {
                 height="50"
                 width="100"
               />
-              {/* <div className="loader__image--bar" />
-              <div className="loader__image--bar" />
-              <div className="loader__image--bar" />
-              <div className="loader__image--bar" />
-              <div className="loader__image--bar" /> */}
             </div>
             <CSSTransition
               nodeRef={textRef}

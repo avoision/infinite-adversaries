@@ -1,3 +1,5 @@
+@import '../styles/colors.scss';
+
 .titleSequence__outer {
   display: table;
   position: absolute;
@@ -16,7 +18,8 @@
   margin: 0 auto;
 
   h1 {
-    font-size: 2rem;
+    font-size: 5rem;
+    color: $color-title;
   }
 }
 

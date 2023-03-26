@@ -1,0 +1,69 @@
+@import '../styles/colors.scss';
+
+.endContent__outer {
+  display: table;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  color: $text-bright;
+
+  background-color: $dark-bg;
+}
+
+.tempBG {
+  background-color: $damage-color;
+  position: absolute;
+  opacity: 1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+}
+
+.tempBG-appear {
+}
+.tempBG-appear-active {
+  opacity: 0;
+  transition: opacity 1s;
+}
+.tempBG-appear-done {
+  display: none;
+}
+
+.endContent__inner {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.endContent__outcome {
+  width: 70%;
+  max-width: 970px;
+  margin: 0 auto;
+  opacity: 1;
+  transition: opacity 3s;
+
+  &--text {
+    margin-bottom: 2vh;
+  }
+
+  &--options {
+    margin-top: 2vh;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    button {
+      flex: 40%;
+      margin: 5px;
+      color: $text-bright;
+    }
+  }
+}
+
+.invisible {
+  opacity: 0;
+}

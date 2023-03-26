@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import './styles/weapon.scss';
 import { weaponPrompt } from './prompts/weaponText';
 import _ from 'lodash';
@@ -27,6 +27,7 @@ export default function Init() {
 
   const router = useRouter();
   const { addWeapon } = useAppContext();
+  const { setHealth } = useAppContext();
 
   const [isLoading, setIsLoading] = useState(false);
   const [getInit, setInit] = useState(emptyInit);
@@ -42,22 +43,6 @@ export default function Init() {
 
     try {
       const weaponDetails = await fetchEncounterDetails(APIType.TEXT, weaponPrompt);
-      // const weaponDetails = {
-      //   weaponOptions: [
-      //     {
-      //       weaponName: 'Claymore',
-      //     },
-      //     {
-      //       weaponName: 'Stun Gun',
-      //     },
-      //     {
-      //       weaponName: 'Plastic knife',
-      //     },
-      //   ],
-      //   paragraph:
-      //     'You stand in a dimly lit chamber, the only illumination coming from the flickering flames of a single torch. In the center of the room, an ornate table stands, a silent sentinel. Three weapons, each one mysterious in its own way, rest on its surface, awaiting selection. The air is thick with anticipation and tension as you sense the powerful history of this room, and the grand destiny that awaits you in the moments that are to come.',
-      // };
-
       const randomWeapons = _.shuffle(weaponDetails.weaponOptions).slice(0, 3);
 
       const initDetails: Init = {
@@ -65,7 +50,7 @@ export default function Init() {
         weaponOptions: randomWeapons,
       };
 
-      if (!initDetails.paragraph) {
+      if (!initDetails.paragraph || !randomWeapons[0].weaponName) {
         routeToPage('/error');
       }
 
@@ -79,60 +64,12 @@ export default function Init() {
   }
 
   function init() {
+    setHealth(20);
+
     setIsLoading(true);
     setShowLoader(true);
     fetchWeapons();
   }
-
-  // useEffect(() => {
-  //   function routeToPage(destination: string) {
-  //     setIsLoading(false);
-  //     setShowLoader(false);
-  //     router.push(destination);
-  //   }
-
-  //   async function fetchWeapons() {
-  //     setIsLoading(true);
-
-  //     try {
-  //       const weaponDetails = await fetchEncounterDetails(APIType.TEXT, weaponPrompt);
-  //       // const weaponDetails = {
-  //       //   weaponOptions: [
-  //       //     {
-  //       //       weaponName: 'Claymore',
-  //       //     },
-  //       //     {
-  //       //       weaponName: 'Stun Gun',
-  //       //     },
-  //       //     {
-  //       //       weaponName: 'Plastic knife',
-  //       //     },
-  //       //   ],
-  //       //   paragraph:
-  //       //     'You stand in a dimly lit chamber, the only illumination coming from the flickering flames of a single torch. In the center of the room, an ornate table stands, a silent sentinel. Three weapons, each one mysterious in its own way, rest on its surface, awaiting selection. The air is thick with anticipation and tension as you sense the powerful history of this room, and the grand destiny that awaits you in the moments that are to come.',
-  //       // };
-
-  //       const randomWeapons = _.shuffle(weaponDetails.weaponOptions).slice(0, 3);
-
-  //       const initDetails: Init = {
-  //         ...weaponDetails,
-  //         weaponOptions: randomWeapons,
-  //       };
-
-  //       if (!initDetails.paragraph) {
-  //         routeToPage('/error');
-  //       }
-
-  //       console.log(initDetails);
-  //       setIsLoading(false);
-  //       setShowLoader(false);
-  //       setInit(initDetails);
-  //     } catch {
-  //       routeToPage('/error');
-  //     }
-  //   }
-  //   fetchWeapons();
-  // }, [router]);
 
   function takeAction(weaponName: string) {
     addWeapon(weaponName);

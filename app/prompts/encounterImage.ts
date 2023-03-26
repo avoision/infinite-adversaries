@@ -1,6 +1,7 @@
 import { getRandomSeed } from '../util/helper';
+import _ from 'lodash';
 
-const artistSeeds = [
+const painterSeeds = [
   'Albrecht Dürer',
   'Alexander Calder',
   'Amrita Sher-Gil',
@@ -373,25 +374,15 @@ const imageStyleSeeds = [
   'dripping art',
   'stained glass portrait',
   'graffiti portrait',
-  'winter oil painting',
+  'oil painting',
+  'watercolor painting',
+  'stencil',
   'anime portrait',
   'cinematographic style',
   'typography art',
   'one-line drawing',
   'polaroid photo',
   'tattoo art',
-];
-
-const imageTypeSeeds = [
-  'oil painting',
-  'watercolor painting',
-  'photograph',
-  'polaroid',
-  'stencil',
-  'anime',
-  'pixel art',
-  'stained glass',
-  'tattoo',
 ];
 
 const photoLightingSeeds = [
@@ -484,15 +475,17 @@ const photoShotSeeds = [
 ];
 
 const imagePrompt = (description: string) => {
-  // const prompt = `Create a ${getRandomSeed(imageTypeSeeds)}, in the style of ${getRandomSeed(photographerSeeds)} using the following keywords: + ${keywords}`;
+  const imageStylePrompt = `Create a ${getRandomSeed(imageStyleSeeds)} image`;
+  const painterPrompt = `Create a painting inspired by ${getRandomSeed(painterSeeds)}`;
+  const photographerPrompt = `Create an photograph inspired by ${getRandomSeed(photographerSeeds)}`;
+  const photoPrompt = `Create a ${getRandomSeed(photoShotSeeds)} photograph, from a ${getRandomSeed(
+    photoPerspectiveSeeds,
+  )}, with ${getRandomSeed(photoLightingSeeds)}`;
 
-  // const prompt = `Create a ${getRandomSeed(photoShotSeeds)} photo, using ${getRandomSeed(photoPerspectiveSeeds)} and ${getRandomSeed(photoLightingSeeds)}, based on the following: ${description}.`
+  const allPrompts = [imageStylePrompt, painterPrompt, photographerPrompt, photoPrompt];
+  const promptPrefix = _.shuffle(allPrompts).slice(0, 1).toString();
 
-  const prompt = `Create a ${getRandomSeed(photoShotSeeds)} photo, in the style of ${getRandomSeed(
-    photographerSeeds,
-  )}, based on the following: ${description}.`;
-
-  return prompt;
+  return `${promptPrefix}, based on the following: ${description}`;
 };
 
 export { imagePrompt };

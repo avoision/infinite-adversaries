@@ -1,4 +1,4 @@
-import react from "React";
+import react from 'React';
 
 export default function About() {
   return (
@@ -6,9 +6,8 @@ export default function About() {
       <div className="about">
         <h3>About</h3>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In accumsan ligula at laoreet
-          consequat. Fusce a ante sit amet enim ornare eleifend. Interdum et malesuada fames ac ante
-          ipsum primis in faucibus.
+          Keep in mind... we're asking an AI to imagine fantastical aliens and mythological
+          creatures, and to spin up bespoke adventures via on-the-fly, unstructured JSON.
         </p>
 
         <div>

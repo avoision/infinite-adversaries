@@ -8,9 +8,19 @@ interface AppContextProps {
 
 const AppContextProvider = ({ children }: AppContextProps) => {
   const [weapon, setWeapon] = useState('');
+  const [getCharacterHealth, setCharacterHealth] = useState(100);
+  const [getFatalOutcome, setFatalOutcome] = useState<string[]>([]);
 
   const addWeapon = (weapon: string) => {
     setWeapon(weapon);
+  };
+
+  const setHealth = (health: number) => {
+    setCharacterHealth(health);
+  };
+
+  const setFate = (fate: string[]) => {
+    setFatalOutcome(fate);
   };
 
   return (
@@ -18,6 +28,10 @@ const AppContextProvider = ({ children }: AppContextProps) => {
       value={{
         weapon,
         addWeapon,
+        health: getCharacterHealth,
+        setHealth,
+        getFate: getFatalOutcome,
+        setFate,
       }}
     >
       {children}

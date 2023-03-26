@@ -25,7 +25,6 @@ const TitleSequence = (props: TitleSequenceProps) => {
       onEntered={() => setTitleSequence(false)}
       onExited={onComplete}
     >
-      {/* <div className="titleSequence__outer"> */}
       <div ref={titleSequenceRef}>
         <div className="titleSequence__inner">
           <div className="titleSequence__content">
@@ -33,7 +32,6 @@ const TitleSequence = (props: TitleSequenceProps) => {
           </div>
         </div>
       </div>
-      {/* </div> */}
     </CSSTransition>
   );
 };

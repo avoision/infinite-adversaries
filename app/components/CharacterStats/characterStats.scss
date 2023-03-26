@@ -1,6 +1,8 @@
+@import '../../styles/colors.scss';
+
 .stats {
-  position: relative;
-  // margin-bottom: 0;
+  border: 1px solid $stats-border;
+  padding: 1vw;
 }
 
 h2 {
@@ -13,28 +15,31 @@ h2 {
 
 progress {
   appearance: none;
-
-  // border-radius: 25px;
-  // padding: 10px;
-  // box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
-
-  // background-color: green;
-  accent-color: purple;
   width: 100%;
 }
 
 progress::-webkit-progress-bar {
-  // background: blue;
-  // accent-color: purple;
+  background: $progress-bg-color;
 }
+
+progress::-moz-progress-bar,
 progress::-webkit-progress-value {
-  // background: green;
-  // accent-color: purple;
-  background-color: green;
+  background-color: $progress-main-color;
 }
 
-// .takeDamage::-webkit-progress-value {
-//   background-color: red;
+.showDamage-enter-active {
+  animation: fadeBackground 0.6s ease-out;
+}
 
-//   transition: background-color ease-in 4s;
-// }
+.showDamage-enter-done {
+  background: $progress-main-color;
+}
+
+@keyframes fadeBackground {
+  from {
+    background: $damage-color;
+  }
+  to {
+    background: transparent;
+  }
+}

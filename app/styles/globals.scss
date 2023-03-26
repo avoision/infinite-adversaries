@@ -1,6 +1,7 @@
 @import 'normalize.css';
 @import 'skeleton.css';
 @import 'effects.scss';
+@import './colors.scss';
 
 header {
   // display: flex;
@@ -39,8 +40,6 @@ header {
   -webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;
 }
 
-.foo {
-  position: absolute;
-  bottom: 0;
-  right: 0;
+.hidden {
+  display: none;
 }

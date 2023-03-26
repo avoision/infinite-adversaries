@@ -1,20 +1,20 @@
-.error__outer {
-  display: table;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-}
+// .error__outer {
+//   display: table;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   height: 100%;
+//   width: 100%;
+// }
 
-.error__inner {
-  display: table-cell;
-  vertical-align: middle;
-}
+// .error__inner {
+//   display: table-cell;
+//   vertical-align: middle;
+// }
 
 .error__content {
   width: 70%;
-  margin: 0 auto;
+  margin: 0 auto 20vh auto;
 
   &--title {
     margin-bottom: 1vh;
@@ -27,5 +27,18 @@
 
   &--text {
     margin-bottom: 2vh;
+  }
+
+  &--options {
+    margin-top: 2vh;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    button {
+      flex: 40%;
+      // padding-top: 2px;
+      margin: 5px;
+    }
   }
 }

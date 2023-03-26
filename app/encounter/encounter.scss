@@ -53,19 +53,24 @@
   }
 
   .encounter__options {
-    margin-top: 2vh;
-
     display: flex;
     flex-wrap: wrap;
 
+    margin-top: 2vh;
+    margin-bottom: 4vh;
+
     button {
       flex: 40%;
-      padding-top: 2px;
+      // padding-top: 2px;
       margin: 5px;
     }
   }
 
   .outcome {
+    margin-bottom: 2vh;
+  }
+
+  .continue__option {
     margin-bottom: 2vh;
   }
 }
@@ -88,11 +93,13 @@
   opacity: 1;
 }
 
-.encounterImage-exit-active {
+.encounterImage-exit-active,
+.encounterImage-exit-active img {
   opacity: 0;
   transition: opacity 0.75s;
 }
-.encounterImage-exit-done {
+.encounterImage-exit-done,
+.encounterImage-exit-done img {
   opacity: 0;
 }
 
