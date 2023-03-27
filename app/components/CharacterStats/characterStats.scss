@@ -15,24 +15,60 @@ h2 {
 
 progress {
   appearance: none;
+  -webkit-appearance: none;
   width: 100%;
 }
 
-progress::-webkit-progress-bar {
-  background: $progress-bg-color;
+progress[value]::-webkit-progress-bar {
+  background-color: $progress-bg-color;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
 }
 
-progress::-moz-progress-bar,
-progress::-webkit-progress-value {
+progress[value]::-moz-progress-bar {
+  background-color: $progress-bg-color;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress[value]::-webkit-progress-value {
   background-color: $progress-main-color;
+  transition: all 0.5s ease-out;
 }
 
-.showDamage-enter-active {
-  animation: fadeBackground 0.6s ease-out;
+progress[value]::-moz-progress-bar {
+  background-color: $progress-main-color;
+  transition: 0.5s ease-out;
 }
 
-.showDamage-enter-done {
-  background: $progress-main-color;
+.showDamage progress[value]::-webkit-progress-value {
+  background-color: $damage-color;
+}
+
+.showDamage progress[value]::-moz-progress-bar {
+  background-color: $damage-color;
+}
+
+.showDamage-enter progress[value]::-webkit-progress-value {
+  background-color: $damage-color;
+}
+
+.showDamage-enter progress[value]::-moz-progress-bar {
+  background-color: $damage-color;
+}
+
+.showDamage-enter-active progress[value]::-webkit-progress-value {
+  background-color: $damage-color;
+  transition: 0.3s ease-out;
+}
+
+.showDamage-enter-active progress[value]::-moz-progress-bar {
+  background-color: $damage-color;
+  transition: 0.3s ease-out;
+}
+
+.showDamage-enter-done progress[value]::-webkit-progress-value {
+  background-color: $progress-main-color;
 }
 
 @keyframes fadeBackground {

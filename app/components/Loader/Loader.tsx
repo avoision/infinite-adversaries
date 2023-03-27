@@ -10,10 +10,11 @@ import infinityLoader from 'public/img/Infinity-1.4s-231px.svg';
 type LoaderProps = {
   isLoading: boolean;
   showLoader: boolean;
+  onComplete?: () => void;
 };
 
 const Loader = (props: LoaderProps) => {
-  const { isLoading, showLoader } = props;
+  const { isLoading, showLoader, onComplete } = props;
   const [getQuoteList, setQuoteList] = useState(['']);
   const [quotePos, setQuotePos] = useState(0);
   const textFadeInterval = 5000;
@@ -44,11 +45,12 @@ const Loader = (props: LoaderProps) => {
   return (
     <CSSTransition
       nodeRef={loaderRef}
-      in={isLoading && showLoader}
+      in={isLoading}
       appear={true}
       timeout={{ appear: 3000, enter: 1000, exit: 500 }}
       classNames="loader"
       className="loader__outer loader"
+      onExited={onComplete}
       unmountOnExit={true}
     >
       <div ref={loaderRef}>

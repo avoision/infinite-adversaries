@@ -15,11 +15,11 @@ export default async function handler(req: NextApiRequestPrompt, res: NextApiRes
     max_tokens: 2000,
   });
 
-  console.log('response data', response?.data);
+  // console.log('response data', response?.data);
   const promptAnswerRaw = response?.data?.choices[0]?.text?.trim();
 
   if (promptAnswerRaw) {
-    console.log('promptAnswerRaw', promptAnswerRaw);
+    // console.log('promptAnswerRaw', promptAnswerRaw);
     const formattedAnswer = JSON.parse(promptAnswerRaw);
     res.status(200).json(formattedAnswer);
   } else {

@@ -1,5 +1,7 @@
+@import '../styles//colors.scss';
+
 .encounter {
-  margin-bottom: 20vh;
+  margin-bottom: 10vh;
 
   .encounter__image {
     position: relative;
@@ -40,7 +42,7 @@
 
   .encounter__title {
     margin-bottom: 2vh;
-    color: peachpuff;
+    color: $encounter-title;
     line-height: 4.5vh;
 
     text-align: center;

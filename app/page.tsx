@@ -8,7 +8,7 @@ import { fetchEncounterDetails, APIType } from './api/openai';
 import { CSSTransition } from 'react-transition-group';
 import { useAppContext } from './components/AppContext/AppContext';
 import { useRouter } from 'next/navigation';
-import { TitleSequence } from './TitleSequence/TitleSequence';
+import { TitleSequence } from './components/TitleSequence/TitleSequence';
 
 export default function Init() {
   type weaponOption = {
@@ -32,6 +32,7 @@ export default function Init() {
   const [isLoading, setIsLoading] = useState(false);
   const [getInit, setInit] = useState(emptyInit);
   const [showLoader, setShowLoader] = useState(false);
+  const [showWeaponIntro, setShowWeaponIntro] = useState(false);
 
   function routeToPage(destination: string) {
     setIsLoading(false);
@@ -54,7 +55,6 @@ export default function Init() {
         routeToPage('/error');
       }
 
-      console.log(initDetails);
       setIsLoading(false);
       setShowLoader(false);
       setInit(initDetails);
@@ -64,7 +64,7 @@ export default function Init() {
   }
 
   function init() {
-    setHealth(20);
+    setHealth(100);
 
     setIsLoading(true);
     setShowLoader(true);
@@ -101,12 +101,18 @@ export default function Init() {
   return (
     <>
       <TitleSequence isLoading={isLoading} onComplete={init} />
-      {<Loader isLoading={isLoading} showLoader={showLoader} />}
+      {
+        <Loader
+          isLoading={isLoading}
+          showLoader={showLoader}
+          onComplete={() => setShowWeaponIntro(true)}
+        />
+      }
       <div className="weapon__outer">
         <div className="weapon__inner">
           <CSSTransition
             nodeRef={weaponTextRef}
-            in={allTextLoaded && !showLoader && !isLoading}
+            in={allTextLoaded && showWeaponIntro}
             appear={true}
             timeout={{
               appear: 7000,

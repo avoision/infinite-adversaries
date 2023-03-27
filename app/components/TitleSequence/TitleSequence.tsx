@@ -1,3 +1,4 @@
+'use client';
 import React, { useRef, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import './titleSequence.scss';

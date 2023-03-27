@@ -77,8 +77,6 @@ function Encounter() {
 
     try {
       const encounterPromptDetails = buildEncounterPrompt(weapon ? weapon : undefined);
-      console.log(encounterPromptDetails);
-
       const textDetails = await fetchEncounterDetails(APIType.TEXT, encounterPromptDetails);
 
       if (!textDetails.title) {
@@ -133,7 +131,7 @@ function Encounter() {
       >
         <div ref={encounterImageRef}>
           <div className="encounter__image--primary">
-            <img src={getEncounter.imageURL} alt="temp" />
+            <img src={getEncounter.imageURL} alt={getEncounter.paragraph1} />
           </div>
           <div
             className="encounter__image--blurred"

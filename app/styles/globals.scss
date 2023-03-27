@@ -4,33 +4,55 @@
 @import './colors.scss';
 
 header {
-  // display: flex;
+  position: relative;
+  display: flex;
   justify-content: space-between;
-  padding-left: 1vw;
-  padding: 1vw 0 1vw 1vw;
-  background-color: #333;
+  padding: 0.5vw 0;
+  background-color: $header-background;
   box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
+  z-index: 100;
 
-  .logo {
-    color: #fff;
-    width: 69px;
-    height: 20px;
+  > h1,
+  h1 a,
+  h1 a:hover {
+    color: $title-muted;
+    font-size: 1.2em;
+    margin-bottom: 0;
+    margin-left: 1vw;
+    letter-spacing: normal;
+    opacity: 0.4;
+    align-self: center;
+    text-decoration: none;
   }
 
   nav {
-    display: flex;
-
-    justify-content: right;
-    margin-right: 20px;
+    margin-right: 1vw;
+    align-self: center;
   }
 
   a {
     margin-right: 10px;
     text-decoration: none;
     text-transform: lowercase;
+    font-size: 0.9em;
+    color: $link-base;
+
+    &:hover {
+      color: $link-hover;
+      text-decoration: underline;
+    }
   }
 
   margin-bottom: 2vh;
+}
+
+button {
+  &:hover {
+    background-color: $link-base;
+    color: white;
+
+    transition: background-color 0.2s;
+  }
 }
 
 .buyMeACoffee {
@@ -42,4 +64,8 @@ header {
 
 .hidden {
   display: none;
+}
+
+.cost {
+  color: $color-cost;
 }

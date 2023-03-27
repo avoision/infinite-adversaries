@@ -1,0 +1,32 @@
+.donate__content {
+  margin-bottom: 10vh;
+
+  &--text {
+    margin-bottom: 2vh;
+  }
+
+  ul {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    li {
+      margin-left: 2vw;
+      margin-bottom: 0;
+    }
+  }
+
+  &--options {
+    margin: 2vh auto;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    .cta {
+      flex: 100%;
+    }
+
+    button {
+      flex: 40%;
+      margin: 5px;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-@import '../styles/colors.scss';
+@import '../../styles/colors.scss';
 
 .titleSequence__outer {
   display: table;
@@ -20,6 +20,7 @@
   h1 {
     font-size: 5rem;
     color: $color-title;
+    letter-spacing: 0.6rem;
   }
 }
 

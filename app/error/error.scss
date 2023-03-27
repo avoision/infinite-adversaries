@@ -1,20 +1,6 @@
-// .error__outer {
-//   display: table;
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   height: 100%;
-//   width: 100%;
-// }
-
-// .error__inner {
-//   display: table-cell;
-//   vertical-align: middle;
-// }
-
 .error__content {
   width: 70%;
-  margin: 0 auto 20vh auto;
+  margin: 0 auto 10vh auto;
 
   &--title {
     margin-bottom: 1vh;
@@ -37,8 +23,17 @@
 
     button {
       flex: 40%;
-      // padding-top: 2px;
       margin: 5px;
+    }
+  }
+
+  .tryAgain {
+    border-color: #8c4c8b;
+    color: #8c4c8b;
+
+    &:hover {
+      color: white;
+      border-color: rgb(187, 187, 187);
     }
   }
 }

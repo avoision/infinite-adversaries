@@ -1,14 +1,18 @@
 import Link from 'next/link';
-import Image from 'next/image';
-import logo from '../../../public/img/logo.png';
 
 const Header = () => {
   return (
     <header>
-      {/* <Image src={logo} alt="logo" className="logo" />; */}
+      <h1>
+        <Link href="/">infinite adversaries</Link>
+      </h1>
+
       <nav>
+        <Link className="link" href="/donate">
+          donate
+        </Link>
         <Link className="link" href="/about">
-          ?
+          about
         </Link>
       </nav>
     </header>

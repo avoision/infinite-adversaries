@@ -1,19 +1,37 @@
-$color-blue: blue;
+$color-primary: #3e6d8d;
+
+// Header/Nav
+$title-muted: #ccc;
+$header-background: #333;
 
 // Title
-$color-title: #e08e79;
+$color-title: $color-primary;
+$encounter-title: #8c5f4c;
 
 // End
 $dark-bg: #000;
 
 // Stats
 $stats-border: #eee;
-$progress-bg-color: #333;
-$progress-main-color: green;
-$damage-color: red;
+$progress-bg-color: #eee;
+$progress-main-color: #3c998c;
+$damage-color: #cc3c3b;
 
 // Text
 $text-bright: #fff;
 
+// Link
+// $link-base: #1eaedb; // Skeleton
+// $link-hover: #0fa0ce;
+
+$link-base: #3e6d8d;
+$link-hover: #68b8ed;
+
+// Button
+// $button-base:
+// $button-hover:
+
 // Book
 $book-page-color: #ccb897;
+
+$color-cost: $progress-main-color;

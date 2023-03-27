@@ -28,12 +28,12 @@ const monsterSeeds = [];
 
 function buildAdversaryType() {
   const sources = [
-    // 'Pick a random legendary creature',
-    // 'Pick a random legendary creature from China',
-    // 'Pick a random legendary creature from Japan',
-    // 'Pick a random creature from Star Wars',
-    // 'Pick a random alien race from Star Trek',
-    // 'Pick a random monster from the Dungeons and Dragons "Monster Manual"',
+    'Pick a random legendary creature',
+    'Pick a random legendary creature from China',
+    'Pick a random legendary creature from Japan',
+    'Pick a random creature from Star Wars',
+    'Pick a random alien race from Star Trek',
+    'Pick a random monster from the Dungeons and Dragons "Monster Manual"',
     'Pick a random monster from the game Zork',
   ];
 

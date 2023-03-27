@@ -31,7 +31,10 @@ export default function ErrorPage() {
           {`There is the sound of wind in the distance, lessening to a whisper. The screen before you dims, almost imperceptibly, as though it waits to see what you will do next. Your fingers tremble slightly, as you consider the options before you.`}
         </div>
         <div className={'error__content--options'}>
-          <button className="error__content--button" onClick={() => router.push('/encounter')}>
+          <button
+            className="error__content--button tryAgain"
+            onClick={() => router.push('/encounter')}
+          >
             Try again: generate an adversary
           </button>
           <button className="error__content--button" onClick={() => router.push('/about')}>

@@ -21,7 +21,7 @@ const CharacterStats = (props: CharacterStatsProps) => {
         nodeRef={statsRef}
         in={showDamage}
         timeout={{
-          enter: 3000,
+          enter: 500,
           exit: 500,
         }}
         classNames="showDamage"
