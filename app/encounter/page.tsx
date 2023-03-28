@@ -1,7 +1,11 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import './encounter.scss';
-import { buildEncounterPrompt } from '../prompts/encounterText';
+import {
+  buildEncounterPrompt,
+  buildOptionsPrompt,
+  getRandomWeapon,
+} from '../prompts/encounterText';
 import { imagePrompt } from '../prompts/encounterImage';
 import _ from 'lodash';
 import { CharacterStats, Loader } from '../components';
@@ -76,29 +80,48 @@ function Encounter() {
     setShowStats(false);
 
     try {
-      const encounterPromptDetails = buildEncounterPrompt(weapon ? weapon : undefined);
-      const textDetails = await fetchEncounterDetails(APIType.TEXT, encounterPromptDetails);
+      const encounterWeapon = weapon ? weapon : getRandomWeapon();
+      const encounterPromptDetails: string = buildEncounterPrompt(encounterWeapon);
+      // console.log(encounterPromptDetails);
 
-      if (!textDetails.title) {
+      const encounterSetup = await fetchEncounterDetails(APIType.TEXT, encounterPromptDetails);
+      console.log(encounterSetup);
+
+      setFate([encounterSetup.fatalOutcome1, encounterSetup.fatalOutcome2]);
+
+      if (!encounterSetup.paragraph1) {
         setIsLoading(false);
         router.push('/error');
         return;
       }
 
-      setFate([textDetails.fatalOutcome1, textDetails.fatalOutcome2]);
+      const optionsPromptDetails = buildOptionsPrompt(
+        encounterWeapon,
+        encounterSetup.creature,
+        encounterSetup.paragraph1,
+      );
+      // console.log(optionsPromptDetails)
 
-      const imagePromptDetails = imagePrompt(textDetails.summary);
+      const optionsSetup = await fetchEncounterDetails(APIType.TEXT, optionsPromptDetails );
+      console.log(optionsSetup);
 
+      if (!optionsSetup.options[0].outcome) {
+        setIsLoading(false);
+        router.push('/error');
+        return;
+      }
+
+      const imagePromptDetails = imagePrompt(encounterSetup.summary);
       const imageDetails = await fetchEncounterDetails(APIType.IMAGE, imagePromptDetails);
+      // console.log(imagePromptDetails);
 
       const encounterDetails = {
-        ...textDetails,
+        ...encounterSetup,
+        ...optionsSetup,
         imageURL: imageDetails.url,
       };
 
-      // console.log(encounterDetails);
-      // console.log(imagePromptDetails);
-      // console.log(encounterPromptDetails);
+      console.log(encounterDetails);
 
       // const encounterDetails = mockEncounter;
 

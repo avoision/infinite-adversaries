@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiRequest } from 'next';
 
 interface NextApiRequestPrompt extends NextApiRequest {
   body: {

@@ -21,9 +21,8 @@ export default function ErrorPage() {
         <div className="error__content--text">
           {`As an image from a childhood long ago appears before your eyes, it slowly dawns on you that something has gone horribly, terribly wrong. A glitch in the Matrix, perhaps. Or a wrinkle in time. Or, more likely, an unnecessary comma in some malformed JSON.`}
         </div>
-        <div className="error__content--text">
-          {`You wait for something else to happen, but no additional information ever arrives.`}
-        </div>
+        <div className={'error__content--options'}></div>
+
         <div className="error__content--text">
           {`You have the sudden realization that you may be forced to return to your job and actually do work. Or be forced to spend time with the other humans in your house, those people you call family. A chill goes down your spine.`}
         </div>
@@ -32,7 +31,7 @@ export default function ErrorPage() {
         </div>
         <div className={'error__content--options'}>
           <button
-            className="error__content--button tryAgain"
+            className="error__content--button tryAgain cta"
             onClick={() => router.push('/encounter')}
           >
             Try again: generate an adversary

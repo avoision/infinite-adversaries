@@ -4,7 +4,13 @@ enum APIType {
 }
 
 async function fetchEncounterDetails(apiType: APIType, prompt: string) {
-  const apiURL = apiType === APIType.TEXT ? '/api/get-encounter' : '/api/get-image';
+  const domain =
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost:3000'
+      : 'https://infinite-adversaries.vercel.app';
+
+  const apiURL =
+    apiType === APIType.TEXT ? domain + '/api/get-encounter' : domain + '/api/get-image';
   const detailFetch = await fetch(apiURL, {
     method: 'POST',
     headers: {
@@ -14,6 +20,7 @@ async function fetchEncounterDetails(apiType: APIType, prompt: string) {
     body: JSON.stringify({
       prompt,
     }),
+    cache: 'no-store',
   });
 
   const detailFetchConverted = await detailFetch.json();

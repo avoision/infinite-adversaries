@@ -1,3 +1,5 @@
+@import '../styles/colors.scss';
+
 .error__content {
   width: 70%;
   margin: 0 auto 10vh auto;
@@ -25,15 +27,23 @@
       flex: 40%;
       margin: 5px;
     }
+
+    .cta {
+      flex: 100%;
+    }
   }
 
   .tryAgain {
-    border-color: #8c4c8b;
-    color: #8c4c8b;
+    border-color: $progress-main-color;
+    color: white;
+    background-color: $progress-main-color;
+    opacity: 0.7;
 
     &:hover {
-      color: white;
-      border-color: rgb(187, 187, 187);
+      // color: white;
+      // border-color: rgb(187, 187, 187);
+      background-color: $progress-main-color;
+      opacity: 1;
     }
   }
 }

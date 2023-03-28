@@ -24,17 +24,21 @@ const weaponSeeds = [
   'Laser Rifle',
 ];
 
+function getRandomWeapon() {
+  return getRandomSeed(weaponSeeds);
+}
+
 const monsterSeeds = [];
 
 function buildAdversaryType() {
   const sources = [
-    'Pick a random legendary creature',
-    'Pick a random legendary creature from China',
-    'Pick a random legendary creature from Japan',
-    'Pick a random creature from Star Wars',
-    'Pick a random alien race from Star Trek',
-    'Pick a random monster from the Dungeons and Dragons "Monster Manual"',
-    'Pick a random monster from the game Zork',
+    'pick a random legendary creature from folklore',
+    'pick a random legendary creature from mythology',
+    'pick a random legendary creature from a country outside of the USA',
+    'pick a random creature from Star Wars',
+    'pick a random alien race from Star Trek',
+    'pick a random monster from the Dungeons and Dragons "Monster Manual"',
+    'pick a random monster from the game Zork',
   ];
 
   return getRandomSeed(sources);
@@ -67,38 +71,48 @@ function buildOptions() {
   return options.join(', ');
 }
 
-const buildEncounterPrompt = (
-  weapon: string = getRandomSeed(weaponSeeds),
-) => `Use the following input to track my equippedItems:
+const buildEncounterPrompt = (weapon: string) =>
+  `Assume a protagonist is armed with: ${weapon}. 
+  
+  For these responses, act as a storyteller and create exciting stories full of action and fantasy. Always respond using second person perspective. These stories should be similar to fairy tales or myths.
 
-{
-  "weapon": ${weapon}
-}
+  First, ${buildAdversaryType()} as an adversary. 
+  
+  Describe a scenario that involves an impending physical fight with this adversary. This description should be five or six sentences long.
 
-${buildAdversaryType()} as an adversary. In the style of a narrator at the beginning of a movie, using second person perspective, describe a scenario that involves an impending physical fight with this adversary in a paragraph five or six sentences long. 
+  Next, describe the location and adversary, along with details about two or three specific objects that are visible. The description should be a single paragraph, five or six sentences long.
 
-Next, describe the location and adversary, along with details about two or three specific objects that are visible. The description should be a single paragraph, five or six sentences long.
+  Next, in the style of an image prompt for DALL-E, summarize the adversary and location in two sentences, with the first sentence describing the adversary, and the second sentence describing the location.
 
-Next, in the style of an image prompt for DALL-E, summarize the adversary and location in two sentences, with the first sentence describing the adversary, and the second sentence describing the location.
+  Next, create a title describing the encounter. This title should be at least seven words long.
 
-Next, create a title describing the encounter, in the style of a fairy tale or fable. This title should be at least seven words long, or longer.
+  Next, describe a fatal outcome where I succumb to the wounds I have received and where the adversary has triumphed. The tone should be one of finality, and be dramatic. This description should be two paragraphs long, with each paragraph at least five or six sentences long.
 
-Next, describe a fatal outcome where I succumb to the wounds I have received and where the adversary has triumphed. The tone should be one of finality, and be similar to the ending of a story. This description should be two paragraphs long, with each paragraph at least five or six sentences long.
+  Return this as a JSON object, using the following format:
+  {
+  "creature": "",
+  "paragraph1": "",
+  "paragraph2": "",
+  "summary": "",
+  "title": "",
+  "fatalOutcome1": "",
+  "fatalOutcome2": ""
+  }`;
 
-Store this information as JSON, using the following format:
-{
-"creature": "",
-"paragraph1": "",
-"paragraph2": "",
-"summary": "",
-"title": "",
-"fatalOutcome1": "",
-"fatalOutcome2": ""
-}
+const buildOptionsPrompt = (weapon: string, creature: string, scenario: string) =>
+  `Assume a protagonist is armed with: ${weapon}.
 
-Present me with four options I can take: ${buildOptions()}. 
+For these results, act as a storyteller. You should use second person perspective, and create exciting stories full of action and fantasy. You should never use the words "I" or "me". These stories should be similar to fairy tales or myths.
 
-Each option should include a detailed description of the option, 7 to 10 words in length, describing what I would do if this option was chosen. Use imperative verbs. Each option should include a damage number, between 5 and 30, indicating the damage I have taken.
+Use the following input that describes an impending physical fight with a ${creature} as an adversary: 
+
+"${scenario}"
+
+Provide four options: ${buildOptions()}. 
+
+With imperative verbs, use three to six words to describe each option. 
+
+Each option should include a damage number, between 5 and 30, indicating the damage inflicted by the adversary.
 
 Only one of the options should succeed, and this option should have a damage number of 0.
 
@@ -115,6 +129,6 @@ Store the options as JSON, using the following format:
 "hidden": false
 }]}
 
-Finally, combine all the stored information as a single JSON response, but omit equippedItems.`;
+Return this JSON object.`;
 
-export { buildEncounterPrompt };
+export { buildEncounterPrompt, buildOptionsPrompt, getRandomWeapon };

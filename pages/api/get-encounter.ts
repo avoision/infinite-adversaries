@@ -2,6 +2,10 @@ import { NextApiResponse } from 'next';
 import { NextApiRequestPrompt } from './types';
 import { Configuration, OpenAIApi } from 'openai';
 
+export const config = {
+  runtime: 'edge',
+};
+
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
@@ -23,6 +27,7 @@ export default async function handler(req: NextApiRequestPrompt, res: NextApiRes
     const formattedAnswer = JSON.parse(promptAnswerRaw);
     res.status(200).json(formattedAnswer);
   } else {
+    console.log(res);
     throw new Error('we got a problem');
   }
 }
