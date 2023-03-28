@@ -1,9 +1,13 @@
+'use client';
+
 enum APIType {
   TEXT = 'text',
   IMAGE = 'image',
 }
 
 async function fetchEncounterDetails(apiType: APIType, prompt: string) {
+  console.log('fetchEncounterDetails');
+
   const domain =
     process.env.NODE_ENV === 'development'
       ? 'http://localhost:3000'
@@ -23,9 +27,39 @@ async function fetchEncounterDetails(apiType: APIType, prompt: string) {
     cache: 'no-store',
   });
 
-  const detailFetchConverted = await detailFetch.json();
+  if (!detailFetch.ok) {
+    throw new Error(detailFetch.statusText);
+  }
 
-  return detailFetchConverted;
+  console.log('detailFetch', detailFetch);
+
+  // This data is a ReadableStream
+  const data = detailFetch.body;
+  if (!data) {
+    return;
+  }
+
+  const reader = data.getReader();
+  const decoder = new TextDecoder();
+  let done = false;
+
+  console.log('done');
+  console.log(reader);
+
+  let dataFromAI;
+
+  while (!done) {
+    const { value, done: doneReading } = await reader.read();
+    done = doneReading;
+    const chunkValue = decoder.decode(value);
+    dataFromAI = dataFromAI + chunkValue; // setGeneratedBios(prev => prev + chunkValue);
+  }
+
+  return dataFromAI;
+
+  // const detailFetchConverted = await detailFetch.json();
+
+  // return detailFetchConverted;
 }
 
 export { fetchEncounterDetails, APIType };
