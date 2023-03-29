@@ -15,7 +15,6 @@ export default function ErrorPage() {
     const endContentStyles = showText ? 'endContent__outcome' : 'endContent__outcome invisible';
 
     return (
-      // <div className="endContent__outcome">
       <div className={endContentStyles}>
         <div className="endContent__outcome--text">{getFate[0]}</div>
         <div className="endContent__outcome--text">{getFate[1]}</div>

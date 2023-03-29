@@ -1,4 +1,14 @@
+@import '../styles/colors.scss';
+
 .about__content {
+  a {
+    color: $link-base;
+    text-decoration: none;
+  }
+  a:hover {
+    color: $link-hover;
+  }
+
   &--text {
     margin-bottom: 2vh;
   }
@@ -27,4 +37,8 @@
       margin: 5px;
     }
   }
+}
+
+.authorTitle {
+  margin-top: 4vh;
 }
