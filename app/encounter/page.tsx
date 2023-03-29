@@ -9,7 +9,7 @@ import {
 import { imagePrompt } from '../prompts/encounterImage';
 import _ from 'lodash';
 import { CharacterStats, Loader } from '../components';
-import { fetchEncounterDetails, APIType } from '../api/openai';
+import { fetchEncounterDetails, fetchEncounterImage } from '../api/openai';
 import { CSSTransition } from 'react-transition-group';
 import { useAppContext } from '../components/AppContext/AppContext';
 import { useRouter } from 'next/navigation';
@@ -84,7 +84,7 @@ function Encounter() {
       const encounterPromptDetails: string = buildEncounterPrompt(encounterWeapon);
       // console.log(encounterPromptDetails);
 
-      const encounterSetup = await fetchEncounterDetails(APIType.TEXT, encounterPromptDetails);
+      const encounterSetup = await fetchEncounterDetails(encounterPromptDetails);
       console.log(encounterSetup);
 
       setFate([encounterSetup.fatalOutcome1, encounterSetup.fatalOutcome2]);
@@ -102,7 +102,7 @@ function Encounter() {
       );
       // console.log(optionsPromptDetails)
 
-      const optionsSetup = await fetchEncounterDetails(APIType.TEXT, optionsPromptDetails );
+      const optionsSetup = await fetchEncounterDetails(optionsPromptDetails);
       console.log(optionsSetup);
 
       if (!optionsSetup.options[0].outcome) {
@@ -112,7 +112,7 @@ function Encounter() {
       }
 
       const imagePromptDetails = imagePrompt(encounterSetup.summary);
-      const imageDetails = await fetchEncounterDetails(APIType.IMAGE, imagePromptDetails);
+      const imageDetails = await fetchEncounterImage(imagePromptDetails);
       // console.log(imagePromptDetails);
 
       const encounterDetails = {
@@ -120,8 +120,7 @@ function Encounter() {
         ...optionsSetup,
         imageURL: imageDetails.url,
       };
-
-      console.log(encounterDetails);
+      // console.log(encounterDetails);
 
       // const encounterDetails = mockEncounter;
 

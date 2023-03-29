@@ -4,7 +4,7 @@ import './styles/weapon.scss';
 import { weaponPrompt } from './prompts/weaponText';
 import _ from 'lodash';
 import { Loader } from './components';
-import { fetchEncounterDetails, APIType } from './api/openai';
+import { fetchEncounterDetails } from './api/openai';
 import { CSSTransition } from 'react-transition-group';
 import { useAppContext } from './components/AppContext/AppContext';
 import { useRouter } from 'next/navigation';
@@ -39,22 +39,20 @@ export default function Init() {
     setShowLoader(false);
     router.push(destination);
   }
+
   async function fetchWeapons() {
     setIsLoading(true);
 
     try {
-      const weaponDetails = await fetchEncounterDetails(APIType.TEXT, weaponPrompt);
+      const weaponDetails = await fetchEncounterDetails(weaponPrompt);
       const randomWeapons = _.shuffle(weaponDetails.weaponOptions).slice(0, 3);
-
       const initDetails: Init = {
         ...weaponDetails,
         weaponOptions: randomWeapons,
       };
-
       if (!initDetails.paragraph || !randomWeapons[0].weaponName) {
         routeToPage('/error');
       }
-
       setIsLoading(false);
       setShowLoader(false);
       setInit(initDetails);

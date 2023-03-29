@@ -4,7 +4,7 @@ export const config = {
   runtime: 'edge',
 };
 
-export default async function handler(req: Request) {
+const handler = async (req: Request): Promise<Response> => {
   const { prompt } = (await req.json()) as {
     prompt?: string;
   };
@@ -15,7 +15,7 @@ export default async function handler(req: Request) {
 
   const payload: OpenAIStreamPayload = {
     model: 'text-davinci-003',
-    messages: [{ role: 'user', content: prompt }],
+    prompt,
     temperature: 0.8,
     top_p: 1,
     frequency_penalty: 0,
@@ -27,4 +27,6 @@ export default async function handler(req: Request) {
 
   const stream = await OpenAIStream(payload);
   return new Response(stream);
-}
+};
+
+export default handler;

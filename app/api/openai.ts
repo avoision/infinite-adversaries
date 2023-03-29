@@ -1,20 +1,14 @@
 'use client';
 
-enum APIType {
-  TEXT = 'text',
-  IMAGE = 'image',
-}
+const domain =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3000'
+    : 'https://infinite-adversaries.vercel.app';
 
-async function fetchEncounterDetails(apiType: APIType, prompt: string) {
+async function fetchEncounterDetails(prompt: string) {
   console.log('fetchEncounterDetails');
 
-  const domain =
-    process.env.NODE_ENV === 'development'
-      ? 'http://localhost:3000'
-      : 'https://infinite-adversaries.vercel.app';
-
-  const apiURL =
-    apiType === APIType.TEXT ? domain + '/api/get-encounter' : domain + '/api/get-image';
+  const apiURL = `${domain}/api/get-encounter`;
   const detailFetch = await fetch(apiURL, {
     method: 'POST',
     headers: {
@@ -31,8 +25,6 @@ async function fetchEncounterDetails(apiType: APIType, prompt: string) {
     throw new Error(detailFetch.statusText);
   }
 
-  console.log('detailFetch', detailFetch);
-
   // This data is a ReadableStream
   const data = detailFetch.body;
   if (!data) {
@@ -42,24 +34,37 @@ async function fetchEncounterDetails(apiType: APIType, prompt: string) {
   const reader = data.getReader();
   const decoder = new TextDecoder();
   let done = false;
-
-  console.log('done');
-  console.log(reader);
-
-  let dataFromAI;
+  let dataFromAI = '';
 
   while (!done) {
     const { value, done: doneReading } = await reader.read();
     done = doneReading;
+
     const chunkValue = decoder.decode(value);
-    dataFromAI = dataFromAI + chunkValue; // setGeneratedBios(prev => prev + chunkValue);
+    dataFromAI = dataFromAI + chunkValue;
   }
 
-  return dataFromAI;
-
-  // const detailFetchConverted = await detailFetch.json();
-
-  // return detailFetchConverted;
+  const detailFetchConverted = JSON.parse(dataFromAI);
+  return detailFetchConverted;
 }
 
-export { fetchEncounterDetails, APIType };
+async function fetchEncounterImage(prompt: string) {
+  const apiURL = `${domain}/api/get-image`;
+
+  const imageFetch = await fetch(apiURL, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      prompt,
+    }),
+    cache: 'no-store',
+  });
+
+  const imageFetchConverted = await imageFetch.json();
+  return imageFetchConverted;
+}
+
+export { fetchEncounterDetails, fetchEncounterImage };
