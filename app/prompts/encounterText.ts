@@ -74,15 +74,15 @@ function buildOptions() {
 const buildEncounterPrompt = (weapon: string) =>
   `Assume a protagonist is armed with: ${weapon}. 
   
-  For these responses, act as a storyteller and create exciting stories full of action and fantasy. Always respond using second person perspective. These stories should be similar to fairy tales or myths.
+  For these responses, act as a storyteller and create exciting stories full of action and fantasy. Always respond using second person point of view. These stories should be similar to fairy tales or myths.
 
   First, ${buildAdversaryType()} as an adversary. 
   
-  Describe a scenario that involves an impending physical fight with this adversary. This description should be five or six sentences long.
+  Describe a scenario that involves an impending physical fight with this adversary. This description should be five or six sentences long. Narrate this from second person point of view, and do not use the words "I" or "me."
 
   Next, describe the location and adversary, along with details about two or three specific objects that are visible. The description should be a single paragraph, five or six sentences long.
 
-  Next, in the style of an image prompt for DALL-E, summarize the adversary and location in two sentences, with the first sentence describing the adversary, and the second sentence describing the location.
+  Next, in the style of an image prompt for DALL-E, describe the adversary and location in one sentence.
 
   Next, create a title describing the encounter. This title should be at least seven words long.
 

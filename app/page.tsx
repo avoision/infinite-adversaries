@@ -9,6 +9,7 @@ import { CSSTransition } from 'react-transition-group';
 import { useAppContext } from './components/AppContext/AppContext';
 import { useRouter } from 'next/navigation';
 import { TitleSequence } from './components/TitleSequence/TitleSequence';
+import { mockWeapons } from './mocks/mockWeapons';
 
 export default function Init() {
   type weaponOption = {
@@ -45,6 +46,9 @@ export default function Init() {
 
     try {
       const weaponDetails = await fetchEncounterDetails(weaponPrompt);
+      // const weaponDetails = mockWeapons;
+      console.log(weaponDetails);
+
       const randomWeapons = _.shuffle(weaponDetails.weaponOptions).slice(0, 3);
       const initDetails: Init = {
         ...weaponDetails,
@@ -53,6 +57,7 @@ export default function Init() {
       if (!initDetails.paragraph || !randomWeapons[0].weaponName) {
         routeToPage('/error');
       }
+
       setIsLoading(false);
       setShowLoader(false);
       setInit(initDetails);

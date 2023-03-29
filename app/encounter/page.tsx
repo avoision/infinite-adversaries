@@ -14,7 +14,7 @@ import { CSSTransition } from 'react-transition-group';
 import { useAppContext } from '../components/AppContext/AppContext';
 import { useRouter } from 'next/navigation';
 
-import { mockEncounter } from './mockEncounter';
+import { mockEncounter } from '../mocks/mockEncounter';
 
 type EncounterOption = {
   type: string;
@@ -233,6 +233,8 @@ function Encounter() {
   }
 
   function takeAction(actionType: string) {
+    window.scrollTo(0, document.body.scrollHeight);
+
     const option = _.find(getEncounter.options, ['type', actionType]);
     if (!_.isEmpty(option)) {
       const newOutcome = [...getOutcome, option.outcome];

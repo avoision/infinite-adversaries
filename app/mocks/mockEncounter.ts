@@ -1,4 +1,4 @@
-import { Encounter } from './page';
+import { Encounter } from '../encounter/page';
 
 const mockEncounter: Encounter = {
   creature: 'Orc',

@@ -3,11 +3,9 @@
 const domain =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:3000'
-    : 'https://infinite-adversaries.vercel.app';
+    : 'https://infiniteadversaries.com';
 
 async function fetchEncounterDetails(prompt: string) {
-  console.log('fetchEncounterDetails');
-
   const apiURL = `${domain}/api/get-encounter`;
   const detailFetch = await fetch(apiURL, {
     method: 'POST',

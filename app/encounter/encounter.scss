@@ -37,17 +37,14 @@
     margin-bottom: 2vh;
   }
 
-  .encounter__outcomes {
-  }
-
   .encounter__title {
     margin-bottom: 2vh;
     color: $encounter-title;
     line-height: 4.5vh;
 
     text-align: center;
-    margin: 3vh 2vw 2vh 2vw;
-    padding: 1vw 7vw;
+    margin: 3vh 0 2vh 0;
+    padding: 1vw 4vw;
     font-size: 3.5rem;
 
     border-top: 1px solid rgba(0, 0, 0, 0.1);
@@ -63,7 +60,6 @@
 
     button {
       flex: 40%;
-      // padding-top: 2px;
       margin: 5px;
     }
   }
@@ -118,9 +114,6 @@
 
 .encounterText-enter-done {
   opacity: 1;
-}
-
-.encounterText-enter-done-active {
 }
 
 .encounterText-exit-active {

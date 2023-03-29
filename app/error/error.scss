@@ -1,16 +1,15 @@
 @import '../styles/colors.scss';
 
 .error__content {
-  width: 70%;
-  margin: 0 auto 10vh auto;
+  margin-bottom: 10vh;
 
   &--title {
     margin-bottom: 1vh;
   }
 
   &--image {
-    width: 70vw;
     height: auto;
+    width: 100%;
   }
 
   &--text {
