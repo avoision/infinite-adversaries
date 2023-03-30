@@ -1,26 +1,48 @@
+## About
+
+Infinite Adversaries is a project that uses ChatGPT and DALL-E to create perpetual, procedural encounters that involve random weapons, adversaries, locations, and outcomes. Through prompts, ChatGPT is instructed to come up with a scenario that describes a physical confrontation - resulting in the user choosing which actions to take.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
-First, run the development server:
+First, install the project dependencies using
+
+```bash
+npm install
+# or
+yarn install
+```
+
+To run this project locally, you'll need an API key in order to make calls to both ChatGPT and DALL-E. Create an account at[openai.com](https://platform.openai.com/), and go through the steps to create an api-key.
+
+Note: while requests cost money, you get a set amount of credit by signing up. You should be able to play around with this project for a while, before needing to actually pay for credits.
+
+Next, create a `.env` file in the root of the directory that contains the following:
+
+```bash
+OPENAI_API_KEY=some-api-key
+```
+
+Replace `some-api-key` with your actual API key. Then, run the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. If all goes well, you should be running Infinite Adversaries locally on your machine!
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Play
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Take a look at the files inside `app/prompts`, as these are the actual prompts that direct ChatGPT and DALL-E to generate content. You can either play with the existing logic, or simply replace the prompts outright with anything you like.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+`weaponText.ts`: This controls the initial page, where ChatGPT determines what weapons to present to the user.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+`encounterText.ts`: This controls the overall encounter with an adversary, along with the possible options and outcomes of each option. This also controls the "final" text that appears, should the user not survive the encounter.
+
+`encounterImage.ts`: This controls what is sent to DALL-E, combining details of teh encounter with randomized parameters for the type of visual media desired.
 
 ## Learn More
 
@@ -28,11 +50,3 @@ To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

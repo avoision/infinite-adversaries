@@ -64,8 +64,14 @@ export default function Donate() {
           on, well... much appreciated. Thanks!
         </div>
         <div className={'donate__content--options'}>
-          <button className="donate__content--button cta" onClick={() => router.push('/about')}>
-            Learn more about this project
+          <button
+            className="donate__content--button cta"
+            onClick={() => window.open('https://www.buymeacoffee.com/felixjung')}
+          >
+            Donate to the project
+          </button>
+          <button className="donate__content--button" onClick={() => router.push('/about')}>
+            Learn more about the project
           </button>
           <button
             className="donate__content--button"

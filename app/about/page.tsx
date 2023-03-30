@@ -10,7 +10,7 @@ export default function About() {
       <div className="about__content">
         <h3>About the Project</h3>
         <div className="about__content--text">
-          Infinite Adversaries uses chatGPT to generate perpetual, randomized encounters, pitting
+          Infinite Adversaries uses ChatGPT to generate perpetual, randomized encounters, pitting
           you against a never-ending army of imaginary enemies. Inspired by the classic{' '}
           <a href="https://en.wikipedia.org/wiki/Choose_Your_Own_Adventure">
             &ldquo;Choose Your Own Adventure&rdquo; books
@@ -20,11 +20,11 @@ export default function About() {
         </div>
         <div className="about__content--text">
           You begin by discovering a table, and are presented with a choice of weapon. Behind the
-          scenes, chatGPT is prompted to create a random list of weapons, which changes with each
+          scenes, ChatGPT is prompted to create a random list of weapons, which changes with each
           visit. This weapon is then equipped for every encounter.
         </div>
         <div className="about__content--text">
-          For each encounter, chatGPT is asked to pick an adversary at random, and to imagine a
+          For each encounter, ChatGPT is asked to pick an adversary at random, and to imagine a
           location where a physical encounter is imminent. ChatGPT also imagines a set of four
           possible actions to take, as well as the outcomes of each action. Some actions result in
           damage. If you survive an encounter, you move on to another.
@@ -32,7 +32,7 @@ export default function About() {
         <div className="about__content--text">
           The actions and outcomes are influenced by the weapon you selected. To visualize the
           encounter, DALL-E is used to generate a random image based on the weapon, adversary, and
-          location. In fact, as part of the prompt, chatGPT is asked to come up with a one-sentence
+          location. In fact, as part of the prompt, ChatGPT is asked to come up with a one-sentence
           summary of the encounter, appropriate for a DALL-E image prompt. Because hey - why have a
           human tell an AI what to do, when you can have an AI tell another AI what to do? What
           could possibly go wrong there?
@@ -61,12 +61,12 @@ export default function About() {
           </a>{' '}
           to generate villanelles automatically (
           <a href="https://twitter.com/villanellebot">@villanelleBot</a>). He might get even lazier,
-          if he can figure out a way to get chatGPT to do this for him.
+          if he can figure out a way to get ChatGPT to do this for him.
         </div>
         <div className="about__content--text">
-          For work, Felix works at <a href="https://grubhub.com/">Grubhub</a> where he types on a
+          By day, Felix works at <a href="https://grubhub.com/">Grubhub</a> where he types on a
           keyboard and stares into a monitor all day. At home when he&apos;s relaxing, Felix enjoys
-          typing on a keyboard and staring into a <em>different</em> monitor.
+          typing on a different keyboard and staring into a different monitor.
         </div>
         <div className="about__content--text">
           Felix lives in Chicago, with his wife <a href="https://avoision.com/tag/liz">Liz</a>, and
