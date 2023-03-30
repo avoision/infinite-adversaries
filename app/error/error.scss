@@ -35,11 +35,11 @@
   .tryAgain {
     border-color: $progress-main-color;
     color: white;
-    background-color: $progress-main-color;
+    background-color: $link-base;
     opacity: 0.7;
 
     &:hover {
-      background-color: $progress-main-color;
+      background-color: $link-base;
       opacity: 1;
     }
   }

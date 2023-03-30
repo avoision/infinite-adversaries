@@ -6,7 +6,7 @@ const mockEncounter: Encounter = {
     "You stand face to face with a fierce Orc, your bow and arrow at the ready. You can feel the tension in the air as the Orc's axe gleams in the moonlight and the bloodthirsty words that leave its lips send chills down your spine. You must act fast, or you will surely be lost in this encounter.",
   paragraph2:
     'You find yourself in a dark forest clearing, a single fire burning in the center of the space. To your left are two large boulders, and to your right is a thicket of trees. The Orc stands between you and the light of the fire, its eyes glowing in the night.',
-  summary:
+  imagePrompt:
     'You are confronting an Orc in a forest clearing, between two boulders and a thicket of trees.',
   title: 'The Battle of the Brave Knight and the Bloodthirsty Orc',
   fatalOutcome1:

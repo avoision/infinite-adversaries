@@ -7,10 +7,10 @@ html {
   background: rgb(204, 184, 151);
   background: linear-gradient(
     90deg,
-    rgba(204, 184, 151, 0.11) 0%,
-    rgba(221, 212, 199, 0.11) 34%,
-    rgba(221, 212, 199, 0.11) 68%,
-    rgba(204, 184, 151, 0.11) 100%
+    rgba(204, 184, 151, 0.6) 0%,
+    rgba(221, 212, 199, 0.6) 34%,
+    rgba(221, 212, 199, 0.6) 68%,
+    rgba(204, 184, 151, 0.6) 100%
   );
 }
 
@@ -26,7 +26,8 @@ header {
   > h1,
   h1 a {
     color: $title-muted;
-    font-size: 1.2em;
+    font-size: 1.1em;
+    font-weight: 200;
     margin-top: 1vh;
     margin-bottom: 1vh;
     margin-left: 0.5vw;
@@ -51,6 +52,7 @@ header {
     text-decoration: none;
     text-transform: lowercase;
     font-size: 0.9em;
+    font-weight: normal;
     color: $link-hover;
 
     &:hover {
@@ -58,6 +60,21 @@ header {
       text-decoration: underline;
     }
   }
+}
+
+h3 {
+  color: $color-primary;
+}
+
+a {
+  color: $color-primary;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+a:hover {
+  color: $color-primary;
+  text-decoration: underline;
 }
 
 button {

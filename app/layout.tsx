@@ -3,6 +3,7 @@ import './styles/globals.scss';
 import { Header } from './components';
 import { Raleway } from 'next/font/google';
 import Script from 'next/script';
+import { Analytics } from '@vercel/analytics/react';
 
 export const metadata = {
   title: 'Infinite Adversaries',
@@ -67,6 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={raleway.className}>
         {<Header />}
         <AppContextProvider>{children}</AppContextProvider>
+        <Analytics />
       </body>
       <Script id="google-analytics" src="https://www.googletagmanager.com/gtag/js?id=G-BJE17QQRDT">
         {`
@@ -80,3 +82,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
+
+// Favicon Info
+// Graphics Author: Copyright 2020 Twitter, Inc and other contributors (https://github.com/twitter/twemoji)
+// Graphics Source: https://github.com/twitter/twemoji/blob/master/assets/svg/2694.svg
+// Graphics License: CC-BY 4.0 (https://creativecommons.org/licenses/by/4.0/)

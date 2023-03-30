@@ -47,9 +47,8 @@ export default function Init() {
     try {
       const weaponDetails = await fetchEncounterDetails(weaponPrompt);
       // const weaponDetails = mockWeapons;
-      console.log(weaponDetails);
 
-      const randomWeapons = _.shuffle(weaponDetails.weaponOptions).slice(0, 3);
+      const randomWeapons = _.shuffle(weaponDetails.weaponOptions).slice(0, 4);
       const initDetails: Init = {
         ...weaponDetails,
         weaponOptions: randomWeapons,
@@ -128,8 +127,8 @@ export default function Init() {
             onExited={() => setShowLoader(true)}
           >
             <div ref={weaponTextRef}>
-              <div className="encounter__description">{getInit.paragraph}</div>
-              <div className="encounter__options">{renderOptions()}</div>
+              <div className="weapon__description">{getInit.paragraph}</div>
+              <div className="weapon__options">{renderOptions()}</div>
             </div>
           </CSSTransition>
         </div>

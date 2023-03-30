@@ -17,12 +17,30 @@
   max-width: 960px;
   margin: 0 auto;
 
-  .encounter__options {
+  .weapon__description {
+    margin-bottom: 2vh;
+  }
+
+  .weapon__options {
     margin-top: 2vh;
     text-align: center;
 
-    button {
-      margin-right: 2vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    /* Larger than mobile */
+    @media (min-width: 400px) {
+      button {
+        width: 100%;
+      }
+    }
+    @media (min-width: 750px) {
+      button {
+        width: 49%;
+        // margin-right: 2vw;
+        // margin: 0 1vw;
+      }
     }
   }
 }

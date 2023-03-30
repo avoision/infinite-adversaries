@@ -29,7 +29,7 @@ interface Encounter {
   creature: string;
   paragraph1: string;
   paragraph2: string;
-  summary: string;
+  imagePrompt: string;
   title: string;
   fatalOutcome1: string;
   fatalOutcome2: string;
@@ -42,7 +42,7 @@ function Encounter() {
     creature: '',
     paragraph1: '',
     paragraph2: '',
-    summary: '',
+    imagePrompt: '',
     title: '',
     fatalOutcome1: '',
     fatalOutcome2: '',
@@ -79,13 +79,17 @@ function Encounter() {
     setEncounterActive(true);
     setShowStats(false);
 
+    // No weapon in prod, start over
+    if (process.env.NODE_ENV !== 'development' && !weapon) {
+      router.push('/');
+      return;
+    }
+
     try {
       const encounterWeapon = weapon ? weapon : getRandomWeapon();
       const encounterPromptDetails: string = buildEncounterPrompt(encounterWeapon);
-      // console.log(encounterPromptDetails);
 
       const encounterSetup = await fetchEncounterDetails(encounterPromptDetails);
-      console.log(encounterSetup);
 
       setFate([encounterSetup.fatalOutcome1, encounterSetup.fatalOutcome2]);
 
@@ -96,14 +100,12 @@ function Encounter() {
       }
 
       const optionsPromptDetails = buildOptionsPrompt(
-        encounterWeapon,
+        weapon,
         encounterSetup.creature,
         encounterSetup.paragraph1,
       );
-      // console.log(optionsPromptDetails)
 
       const optionsSetup = await fetchEncounterDetails(optionsPromptDetails);
-      console.log(optionsSetup);
 
       if (!optionsSetup.options[0].outcome) {
         setIsLoading(false);
@@ -111,16 +113,14 @@ function Encounter() {
         return;
       }
 
-      const imagePromptDetails = imagePrompt(encounterSetup.summary);
+      const imagePromptDetails = imagePrompt(encounterSetup.imagePrompt);
       const imageDetails = await fetchEncounterImage(imagePromptDetails);
-      // console.log(imagePromptDetails);
 
       const encounterDetails = {
         ...encounterSetup,
         ...optionsSetup,
         imageURL: imageDetails.url,
       };
-      // console.log(encounterDetails);
 
       // const encounterDetails = mockEncounter;
 

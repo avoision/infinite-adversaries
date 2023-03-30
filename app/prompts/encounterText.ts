@@ -32,6 +32,11 @@ const monsterSeeds = [];
 
 function buildAdversaryType() {
   const sources = [
+    'pick a random group of small, cute animals that have suddenly become bloodthirsty',
+    'pick a random, household appliance that has suddenly become sentient and angry',
+    'pick a random pastry, that has become sentient and sarcastic',
+    'pick a random monster from a horror movie',
+    'pick a random group of humans that share the same occupation',
     'pick a random legendary creature from folklore',
     'pick a random legendary creature from mythology',
     'pick a random legendary creature from a country outside of the USA',
@@ -82,7 +87,7 @@ const buildEncounterPrompt = (weapon: string) =>
 
   Next, describe the location and adversary, along with details about two or three specific objects that are visible. The description should be a single paragraph, five or six sentences long.
 
-  Next, in the style of an image prompt for DALL-E, describe the adversary and location in one sentence.
+  Next, in the style of an image prompt for DALL-E, describe the adversary and the physical location in one sentence.
 
   Next, create a title describing the encounter. This title should be at least seven words long.
 
@@ -93,7 +98,7 @@ const buildEncounterPrompt = (weapon: string) =>
   "creature": "",
   "paragraph1": "",
   "paragraph2": "",
-  "summary": "",
+  "imagePrompt": "",
   "title": "",
   "fatalOutcome1": "",
   "fatalOutcome2": ""
