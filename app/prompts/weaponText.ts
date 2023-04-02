@@ -11,6 +11,13 @@ In the style of a narrator, using second person perspective, in a paragraph, des
   "paragraph": ""
 }
 
-Finally, combine all the stored information as a single JSON response.`;
+Finally, combine all the stored information as a single JSON response, using the following format:
+
+{
+  "weaponOptions": [{
+    "weaponName": ""
+  }],
+  "paragraph": ""
+}`;
 
 export { weaponPrompt };

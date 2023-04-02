@@ -60,7 +60,9 @@ export default function Init() {
       setIsLoading(false);
       setShowLoader(false);
       setInit(initDetails);
-    } catch {
+    } catch (e) {
+      console.log('%cfetch weapons fail', 'background: red; color: white; display: block;');
+      console.log(e);
       routeToPage('/error');
     }
   }
