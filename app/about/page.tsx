@@ -51,8 +51,8 @@ export default function About() {
         <h3 className="authorTitle">About the Author</h3>
         <div className="about__content--text">
           Felix Jung is a developer who had a former life as a writer. Regardless of whether
-          he&apos;s writing a villanelle or a unit test, he finds it pleasurable figuring out the
-          right words in the right order.
+          he&apos;s writing a villanelle or a unit test, he finds it pleasurable figuring out how to
+          get the right words in the right order.
         </div>
         <div className="about__content--text">
           Note: he&apos;s sometimes lazy, as evidenced by the fact that he{' '}

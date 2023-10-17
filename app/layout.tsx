@@ -1,11 +1,12 @@
 import AppContextProvider from './components/AppContext/AppContextProvider';
 import './styles/globals.scss';
 import { Header } from './components';
-import { Raleway } from 'next/font/google';
+import { raleway } from './fonts';
 import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/react';
 
 export const metadata = {
+  metadataBase: new URL('https://infiniteadversaries.com'),
   title: 'Infinite Adversaries',
   description:
     'A random, perpetually procedural game created and narrated by ChatGPT, illustrated by DALL-E.',
@@ -56,11 +57,6 @@ export const metadata = {
     type: 'website',
   },
 };
-
-const raleway = Raleway({
-  subsets: ['latin'],
-  display: 'swap',
-});
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

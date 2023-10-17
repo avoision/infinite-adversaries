@@ -35,6 +35,18 @@
 
   .encounter__description {
     margin-bottom: 2vh;
+
+    &__firstParagraph {
+      &::first-letter {
+        initial-letter: 3;
+        font-family: var(--font-initial-letter);
+        border: 5px solid #eee;
+        background-color: $color-primary;
+        padding: 10px;
+        color: #eee;
+        margin: 10px 8px 0 0;
+      }
+    }
   }
 
   .encounter__title {

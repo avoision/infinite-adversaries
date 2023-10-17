@@ -10,6 +10,7 @@ import { useAppContext } from './components/AppContext/AppContext';
 import { useRouter } from 'next/navigation';
 import { TitleSequence } from './components/TitleSequence/TitleSequence';
 import { mockWeapons } from './mocks/mockWeapons';
+import { initialLetter } from './fonts';
 
 export default function Init() {
   type weaponOption = {
@@ -129,7 +130,9 @@ export default function Init() {
             onExited={() => setShowLoader(true)}
           >
             <div ref={weaponTextRef}>
-              <div className="weapon__description">{getInit.paragraph}</div>
+              <div className={`weapon__description ${initialLetter.variable}`}>
+                {getInit.paragraph}
+              </div>
               <div className="weapon__options">{renderOptions()}</div>
             </div>
           </CSSTransition>

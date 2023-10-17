@@ -43,7 +43,7 @@ async function fetchEncounterDetails(prompt: string) {
   }
 
   const detailFetchConverted = JSON.parse(dataFromAI);
-  return detailFetchConverted;
+  return JSON.parse(detailFetchConverted.choices[0].message.content);
 }
 
 async function fetchEncounterImage(prompt: string) {

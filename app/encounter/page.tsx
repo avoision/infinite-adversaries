@@ -13,8 +13,8 @@ import { fetchEncounterDetails, fetchEncounterImage } from '../api/openai';
 import { CSSTransition } from 'react-transition-group';
 import { useAppContext } from '../components/AppContext/AppContext';
 import { useRouter } from 'next/navigation';
-
 import { mockEncounter } from '../mocks/mockEncounter';
+import { initialLetter } from '../fonts';
 
 type EncounterOption = {
   type: string;
@@ -307,7 +307,11 @@ function Encounter() {
             <div ref={encounterTextRef}>
               <>
                 {renderTitle()}
-                <div className="encounter__description">{getEncounter.paragraph1}</div>
+                <div
+                  className={`encounter__description encounter__description__firstParagraph ${initialLetter.variable}`}
+                >
+                  {getEncounter.paragraph1}
+                </div>
                 <div className="encounter__description">{getEncounter.paragraph2}</div>
                 <div className="encounter__outcomes">{renderOutcomes()}</div>
                 <div className={encounterOptionsStyle}>{renderOptions()}</div>

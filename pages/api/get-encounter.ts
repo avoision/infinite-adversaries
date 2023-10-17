@@ -1,11 +1,12 @@
-import { OpenAIStream, OpenAIStreamPayload } from '../../app/util/OpenAIStream';
+import { NextResponse } from 'next/server';
+import OpenAI from 'openai';
 
 export const config = {
   runtime: 'edge',
 };
 
-const handler = async (req: Request): Promise<Response> => {
-  const { prompt } = (await req.json()) as {
+const handler = async (request: Request): Promise<Response> => {
+  const { prompt } = (await request.json()) as {
     prompt?: string;
   };
 
@@ -13,20 +14,31 @@ const handler = async (req: Request): Promise<Response> => {
     return new Response('No prompt in the request', { status: 400 });
   }
 
-  const payload: OpenAIStreamPayload = {
-    model: 'text-davinci-003',
-    prompt,
-    temperature: 0.8,
+  const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
+
+  const response = await openai.chat.completions.create({
+    model: 'gpt-3.5-turbo',
+    messages: [
+      {
+        role: 'system',
+        content:
+          'In the style of a narrator, using second person perspective, act as a storyteller and create exciting stories full of action and fantasy. Always respond using second person point of view, in the present tense. These stories should be similar to fairy tales or myths.',
+      },
+      {
+        role: 'user',
+        content: prompt,
+      },
+    ],
+    temperature: 0,
+    max_tokens: 1024,
     top_p: 1,
     frequency_penalty: 0,
     presence_penalty: 0,
-    max_tokens: 2000,
-    stream: true,
-    n: 1,
-  };
+  });
 
-  const stream = await OpenAIStream(payload);
-  return new Response(stream);
+  return NextResponse.json(response);
 };
 
 export default handler;

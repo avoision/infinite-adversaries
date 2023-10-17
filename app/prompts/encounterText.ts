@@ -78,8 +78,6 @@ function buildOptions() {
 
 const buildEncounterPrompt = (weapon: string) =>
   `Assume a protagonist is armed with: ${weapon}. 
-  
-  For these responses, act as a storyteller and create exciting stories full of action and fantasy. Always respond using second person point of view. These stories should be similar to fairy tales or myths.
 
   First, ${buildAdversaryType()} as an adversary. 
   
@@ -107,33 +105,41 @@ const buildEncounterPrompt = (weapon: string) =>
 const buildOptionsPrompt = (weapon: string, creature: string, scenario: string) =>
   `Assume a protagonist is armed with: ${weapon}.
 
-For these results, act as a storyteller. You should use second person perspective, and create exciting stories full of action and fantasy. You should never use the words "I" or "me". These stories should be similar to fairy tales or myths.
-
 Use the following input that describes an impending physical fight with a ${creature} as an adversary: 
 
 "${scenario}"
 
-Provide four options: ${buildOptions()}. 
+Create a JSON object for each of the following: ${buildOptions()}. The format of each object should be:
 
-With imperative verbs, use three to six words to describe each option. 
+{
+"type": "attack",
+"description": "Three to six word description",
+"damage": 12,
+"outcome": "Outcome of the option",
+"success": false,
+"hidden": false
+}
 
-Each option should include a damage number, between 5 and 30, indicating the damage inflicted by the adversary.
+For "type," this should be the option name.
+
+For "description," use three to six words to describe the option with imperative verbs, but do not use any punctuation.
+
+For "damage," use a random number between 5 and 30, indicating the damage inflicted by the adversary.
 
 Only one of the options should succeed, and this option should have a damage number of 0.
 
 For each option, provide a detailed description of the option outcome as a paragraph, at least 6 sentences long. For each failed outcome, end by mentioning the numeric damage taken by me. 
 
-Store the options as JSON, using the following format:
+Return all the JSON objects as a single JSON response, using the following format:
 {
 "options": [{
 "type": "attack",
-"description": "",
+"description": "Three to six word description",
 "damage": 12,
-"outcome": "",
+"outcome": "Outcome of the option",
 "success": false,
 "hidden": false
 }]}
-
-Return this JSON object.`;
+`;
 
 export { buildEncounterPrompt, buildOptionsPrompt, getRandomWeapon };

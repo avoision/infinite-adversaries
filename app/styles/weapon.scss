@@ -1,3 +1,5 @@
+@import './colors.scss';
+
 .weapon__outer {
   display: table;
   position: absolute;
@@ -19,6 +21,16 @@
 
   .weapon__description {
     margin-bottom: 2vh;
+
+    &::first-letter {
+      initial-letter: 3;
+      font-family: var(--font-initial-letter);
+      border: 5px solid #eee;
+      background-color: $color-primary;
+      padding: 10px;
+      color: #eee;
+      margin: 10px 8px 0 0;
+    }
   }
 
   .weapon__options {
